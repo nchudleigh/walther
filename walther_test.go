@@ -35,36 +35,17 @@ func TestDecode(t *testing.T) {
 func TestGenerate(t *testing.T) {
 	var cases = []int{0, 1, 100, 999, 9999, 99999, 999999, 9999999, 99999999, 999999999}
 	for _, length := range cases {
-		output := Generate3(length)
+		output := Generate(length)
 		if len(output) != length {
 			t.Errorf("Generate(%d) => Got: %d,  Expected: %d", length, len(output), length)
 		}
 	}
 }
 
-// a common length for the use case of generate
 const n = 16
 
 func BenchmarkGenerate(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		Generate(n)
-	}
-}
-
-func BenchmarkGenerate2(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		Generate2(n)
-	}
-}
-
-func BenchmarkGenerate3(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		Generate3(n)
-	}
-}
-
-func BenchmarkGenerate4(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		Generate4(n)
 	}
 }
